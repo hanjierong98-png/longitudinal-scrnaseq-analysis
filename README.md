@@ -40,7 +40,7 @@ Gene modules are functionally interpreted using:
 
 Both full and significant enrichment results are retained for downstream interpretation.
 
-### 4. Pathway activity dynamics (AUC-based)
+### 4. Pathway activity dynamics (UCell-based scoring)
 Representative enriched pathways are selected based on adjusted p-values.  
 Pathway activity is quantified at the single-cell level using **UCell**, and summarized across time points to reveal temporal dynamics.
 
