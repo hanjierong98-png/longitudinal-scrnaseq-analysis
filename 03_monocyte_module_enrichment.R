@@ -12,6 +12,7 @@ suppressPackageStartupMessages({
 # --------------------------------------------------
 # 1. Parameters
 # --------------------------------------------------
+dir.create("results", showWarnings = FALSE)
 PADJ_SHOW <- 0.05
 TOP_N <- 5
 
