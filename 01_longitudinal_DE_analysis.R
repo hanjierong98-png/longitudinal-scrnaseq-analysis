@@ -9,6 +9,7 @@ suppressPackageStartupMessages({
 # --------------------------------------------------
 # 1. Load single-cell object
 # --------------------------------------------------
+dir.create("results", showWarnings = FALSE)
 obj <- readRDS("data/single_cell_object.rds")
 DefaultAssay(obj) <- "RNA"
 
