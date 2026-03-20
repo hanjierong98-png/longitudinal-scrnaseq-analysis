@@ -1,53 +1,48 @@
 # Longitudinal single-cell RNA-seq analysis of immune responses
 
-This repository contains code for longitudinal single-cell transcriptomic analysis to investigate dynamic immune responses over time.
+This repository contains code for the integrative analysis of longitudinal single-cell transcriptomic data to investigate dynamic immune responses over time.
+
+The workflow combines differential expression analysis, gene module identification, functional enrichment and pathway activity quantification to uncover regulatory programs underlying immune heterogeneity.
 
 ---
 
 ## Overview
 
-The analysis focuses on identifying temporal changes in gene expression and uncovering regulatory programs underlying immune heterogeneity.
+Understanding how immune responses evolve over time requires integrating information across multiple analytical layers.  
+In this project, I implement a structured computational pipeline to:
 
-All analyses are implemented in **R**, primarily using **Seurat** and downstream statistical and functional analysis frameworks.
-
----
-
-## Analysis Structure
-
-The scripts are organized according to the main analysis steps:
-
-- **01_longitudinal_DE_screening**  
-  Paired differential expression analysis across time points using **MAST**, performed across multiple cell types to identify the most responsive populations.
-
-- **02_monocyte_module_analysis**  
-  Downstream analysis focused on monocytes, including:
-  - Construction of effect-size matrices across time points  
-  - Gene module identification using hierarchical clustering  
-  - Heatmap visualization of temporal expression patterns  
-
-- **03_monocyte_module_enrichment**  
-  Functional interpretation of gene modules using:
-  - Gene Ontology (GO) enrichment  
-  - Reactome pathway analysis  
+- identify cell-type-specific transcriptional changes across time points  
+- detect gene modules capturing coordinated regulatory programs  
+- interpret these modules using functional enrichment analysis  
+- quantify pathway activity dynamics using AUC-based scoring  
 
 ---
 
-## Methods and Tools
+## Analysis Workflow
 
-- **Single-cell analysis**: Seurat  
-- **Differential expression**: MAST (paired design)  
-- **Clustering**: hierarchical clustering (Ward.D2)  
-- **Visualization**: ComplexHeatmap  
-- **Functional analysis**: clusterProfiler, ReactomePA  
+The analysis is organised into four main steps:
 
----
+### 1. Longitudinal differential expression screening
+Paired differential expression analysis across time points using **MAST**, performed across multiple cell types to identify the most responsive populations.
 
-## Key Features
+### 2. Monocyte module analysis
+Focused downstream analysis of monocytes, including:
 
-- Longitudinal analysis of transcriptomic changes  
-- Integration of multiple time-point comparisons  
-- Identification of gene modules capturing dynamic regulatory programs  
-- Functional interpretation of immune-related pathways  
+- construction of effect-size matrices across time points  
+- gene module identification using hierarchical clustering  
+- heatmap visualization of temporal expression patterns  
+
+### 3. Functional enrichment analysis
+Gene modules are functionally interpreted using:
+
+- Gene Ontology Biological Process (**GO_BP**)  
+- Reactome pathway analysis  
+
+Both full and significant enrichment results are retained for downstream interpretation.
+
+### 4. Pathway activity dynamics (AUC-based)
+Representative enriched pathways are selected based on adjusted p-values.  
+Pathway activity is quantified at the single-cell level using **UCell**, and summarized across time points to reveal temporal dynamics.
 
 ---
 
@@ -55,3 +50,4 @@ The scripts are organized according to the main analysis steps:
 
 - Data are not included due to privacy and data protection restrictions  
 - Scripts are provided as representative examples of the computational workflow  
+- Gene sets used for pathway scoring are derived from enrichment results
