@@ -19,20 +19,17 @@ DefaultAssay(obj) <- "RNA"
 meta <- obj@meta.data
 
 # adapt these column names to your object
-stopifnot(all(c("celltype", "timepoint", "patient_id") %in% colnames(meta)))
+stopifnot(all(c("celltype", "timepoint", "patient_id") %in% colnames(obj@meta.data)))
 
 obj$celltype   <- as.character(obj$celltype)
 obj$timepoint  <- factor(obj$timepoint, levels = c("T0", "T1", "T2", "T3"))
 obj$patient_id <- as.character(obj$patient_id)
 
-# keep only cells with complete metadata
 obj <- subset(
   obj,
-  cells = rownames(meta)[
-    !is.na(meta$celltype) &
-    !is.na(meta$timepoint) &
-    !is.na(meta$patient_id)
-  ]
+  subset = !is.na(celltype) &
+           !is.na(timepoint) &
+           !is.na(patient_id)
 )
 
 # --------------------------------------------------
