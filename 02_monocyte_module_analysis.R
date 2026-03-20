@@ -9,13 +9,8 @@ suppressPackageStartupMessages({
 # --------------------------------------------------
 # 1. Load DEG results
 # --------------------------------------------------
-deg_all <- readRDS("results/deg_all_celltypes.rds")
-
-padj_candidates  <- c("p_val_adj", "p_adj", "FDR")
-logfc_candidates <- c("avg_log2FC", "avg_logFC", "log2FoldChange", "logFC")
-
-padj_col  <- intersect(padj_candidates, colnames(deg_all))[1]
-logfc_col <- intersect(logfc_candidates, colnames(deg_all))[1]
+padj_col  <- "p_val_adj"
+logfc_col <- "avg_log2FC"
 
 # --------------------------------------------------
 # 2. Focus on monocytes
