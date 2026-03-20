@@ -9,6 +9,8 @@ suppressPackageStartupMessages({
 # --------------------------------------------------
 # 1. Load DEG results
 # --------------------------------------------------
+dir.create("results", showWarnings = FALSE)
+deg_all <- readRDS("results/deg_all_celltypes.rds")
 padj_col  <- "p_val_adj"
 logfc_col <- "avg_log2FC"
 
