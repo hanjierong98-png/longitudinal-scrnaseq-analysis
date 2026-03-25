@@ -1,53 +1,74 @@
 # Longitudinal single-cell RNA-seq analysis of immune responses
 
-This repository contains code for the integrative analysis of longitudinal single-cell transcriptomic data to investigate dynamic immune responses over time.
+This repository provides a structured computational workflow for the integrative analysis of longitudinal single-cell transcriptomic data to investigate dynamic immune responses and regulatory programs over time.
 
-The workflow combines differential expression analysis, gene module identification, functional enrichment and pathway activity quantification to uncover regulatory programs underlying immune heterogeneity.
+The pipeline combines differential expression analysis, gene module identification, functional enrichment and pathway activity quantification to uncover mechanisms underlying immune heterogeneity.
 
 ---
 
 ## Overview
 
-Understanding how immune responses evolve over time requires integrating information across multiple analytical layers.  
-In this project, I implement a structured computational pipeline to:
+Understanding immune dynamics requires integrating multiple analytical layers across time.  
+This project implements a reproducible framework to:
 
 - identify cell-type-specific transcriptional changes across time points  
-- detect gene modules capturing coordinated regulatory programs  
+- detect gene modules representing coordinated regulatory programs  
 - interpret these modules using functional enrichment analysis  
-- quantify pathway activity dynamics using AUC-based scoring  
+- quantify pathway activity dynamics using single-cell AUC-based scoring  
 
 ---
 
 ## Analysis Workflow
 
-The analysis is organised into four main steps:
+The workflow is organised into four main steps:
 
-### 1. Longitudinal differential expression screening
-Paired differential expression analysis across time points using **MAST**, performed across multiple cell types to identify the most responsive populations.
+### 1. Longitudinal differential expression analysis
+- Paired differential expression using **MAST**
+- Performed across multiple cell types
+- Identifies dynamic transcriptional responses over time  
 
-### 2. Monocyte module analysis
-Focused downstream analysis of monocytes, including:
+---
 
-- construction of effect-size matrices across time points  
-- gene module identification using hierarchical clustering  
-- heatmap visualization of temporal expression patterns  
+### 2. Monocyte-focused module analysis
+- Construction of effect-size matrices across time points  
+- Gene module identification using hierarchical clustering  
+- Silhouette-based selection of optimal cluster number  
+- Heatmap visualization of temporal expression patterns  
+
+---
 
 ### 3. Functional enrichment analysis
-Gene modules are functionally interpreted using:
+Gene modules are interpreted using:
 
 - Gene Ontology Biological Process (**GO_BP**)  
 - Reactome pathway analysis  
 
-Both full and significant enrichment results are retained for downstream interpretation.
-
-### 4. Pathway activity dynamics (UCell-based scoring)
-Representative enriched pathways are selected based on adjusted p-values.  
-Pathway activity is quantified at the single-cell level using **UCell**, and summarized across time points to reveal temporal dynamics.
+Outputs include:
+- full enrichment results  
+- significance-filtered results  
+- module-level pathway summaries  
 
 ---
 
-## Notes
+### 4. Pathway activity dynamics (UCell-based)
+- Selection of representative pathways based on adjusted p-values  
+- Gene sets derived from enrichment results  
+- Single-cell pathway scoring using **UCell**  
+- Aggregation across time points to reveal temporal dynamics  
+
+---
+
+## Key Features
+
+- Longitudinal design with paired statistical modeling  
+- Module-based interpretation of dynamic gene programs  
+- Integration of enrichment results into pathway activity scoring  
+- Flexible and extensible workflow for multi-step analysis  
+
+---
+
+## Data and Usage Notes
 
 - Data are not included due to privacy and data protection restrictions  
-- Scripts are provided as representative examples of the computational workflow  
-- Gene sets used for pathway scoring are derived from enrichment results
+- Scripts are provided as representative examples of the analysis workflow  
+- Gene sets used for pathway scoring are derived from enrichment results  
